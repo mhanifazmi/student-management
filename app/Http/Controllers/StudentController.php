@@ -14,9 +14,9 @@ class StudentController extends Controller
 	{
 		$search = $request->search ?? null;
 		$students = Student::when(!is_null($search), function($query) use($search){
-			$query->search($search);
-		})
-		->get();
+				$query->search($search);
+			})
+			->get();
 
 		return view('index', compact('students'));
 	}
