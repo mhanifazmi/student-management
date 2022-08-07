@@ -61,9 +61,16 @@
     <script>
         function calculateAge(){
             var birth_at = document.getElementById('birth_at').value;
-            var birthday = +new Date(birth_at);
-            var age = document.getElementById('age');
-            age.value = ~~ ((Date.now() - birthday) / (31557600000));
+            var value = document.getElementById('age');
+
+            var today = new Date();
+            var birthDate = new Date(birth_at);
+            var age = today.getFullYear() - birthDate.getFullYear();
+            var m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            value.value = age;
         }
     </script>
 </body>
