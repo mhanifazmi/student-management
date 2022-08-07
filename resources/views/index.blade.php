@@ -60,7 +60,7 @@
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->birth_at->format('d M Y') }}</td>
-                        <td>{{ $student->age }}</td>
+                        <td>{{ $student->total_age }} years old</td>
                         <td>{{ $student->class_name }}</td>
                         <td>
                             <a href="{{ route('student.show', $student) }}">View</a> |

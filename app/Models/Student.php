@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,7 +15,8 @@ class Student extends Model
     ];
 
     protected $appends = [
-        'class_name'    
+        'class_name',
+        'total_age'  
     ];
 
     public function classroom(){
@@ -26,6 +28,10 @@ class Student extends Model
             return $this->classroom->name;
         }
         return null;
+    }
+
+    public function getTotalAgeAttribute(){
+        return Carbon::parse($this->birth_at)->diff(Carbon::now())->y;
     }
 
     public function scopeSearch($query, $search){
